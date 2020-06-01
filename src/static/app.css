@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.tableList{
+    width: 80%;
+    margin: 0 auto;
+}
+.tableList tr{
+
+}
+.tableList tr td, th{
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid black;
+}
+ input[type=button] {
+    padding: 6px 16px;
+    text-align: center;
+    color: #FFFFFF;
+    background: lightseagreen;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 6px;
+    outline: none;
+    margin-right: 10px;
+}
+ input[type=button].removeBtn{
+    background: red;
+}
+input{
+    -webkit-appearance: button;
+}
+form{
+    width: 80%;
+    margin: 20px auto;
+}
+form input{
+    width: 200px;
+    height: 30px;
+    outline: none;
+}
+form input[type=button]{
+    margin-left: 20px;
+}
