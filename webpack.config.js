@@ -29,6 +29,12 @@ let webpackConfig = {
             },
         ],
     },
+    resolve: {
+        extensions: ['.js', '.css'],
+        alias: {
+            "@pages": path.resolve(__dirname, "./src/view"),
+        }
+    },
 };
 
 module.exports = merge(webpackConfig, _mergeConfig);

@@ -15,15 +15,16 @@ export default class TodoList extends React.Component{
                     id: 1
                 }
             ],
-            id: ''
+            id: '',
+            num: 0
         }
         this.formRef = React.createRef()
     }
 
     componentDidMount() {
-        console.log(this.props.match.params);
         this.setState({
-            id: this.props.match.params.id
+            id: this.props.match.params.id,
+            // num: this.props.location.state.num
         })
     }
 
@@ -85,8 +86,9 @@ export default class TodoList extends React.Component{
     //通过ref来通信   通过pulish_event来通信    通过callback形式来通信   mobx
     render() {
         return (
-            <div style={{'text-align': 'center'}}>
+            <div style={{textAlign: 'center'}}>
                 <span>id: {this.state.id}</span>
+                {/*<span>num: {this.state.num}</span>*/}
                 <Form ref={this.formRef}  submitBtn={<input type="button" value="Submit" onClick={this.submitForm.bind(this)} />}>
                 </Form>
                 <Table OnUpdateTableList={this.updateTableList.bind(this)} OnRemoveTableList={this.removeTableList.bind(this)} TableList={this.state.tableList}></Table>

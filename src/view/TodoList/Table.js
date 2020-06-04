@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 export  default class Table extends Component{
     constructor(props) {
@@ -86,6 +87,6 @@ export  default class Table extends Component{
         );
     }
 }
-// Table.propsType = {
-//
-// }
+Table.propTypes = {
+    TableList: PropTypes.array.isRequired
+};
