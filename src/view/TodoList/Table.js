@@ -12,36 +12,6 @@ export  default class Table extends Component{
     componentWillMount(){
         console.log('componentWillMount')
     }
-    //装载完成，在render之后调用;render之后并不会立即调用，而是所有的子组件都render完之后才可以调用;只能在浏览器端被调用，在服务器端使用react的时候不会被调用
-    componentDidMount() {
-        console.log('componentDidMount');
-    }
-    shouldComponentUpdate(nextProps){ //return  true/false  ture会重新渲染  false不会render // 应该使用这个方法，否则无论props是否有变化都将会导致组件跟着重新渲染
-       console.log('shouldComponentUpdate');
-       console.log(nextProps.TableList);
-       console.log(this.state.TableList);
-            return  true
-    }
-    componentWillReceiveProps(nextProps) { // 父组件重传props时就会调用这个方法 this.setState
-        this.setState({TableList: nextProps.TableList});
-        console.log('componentWillReceiveProps')
-    }
-    //this.foreUpdate() 是否依赖其他数据
-    componentWillUpdate() {
-        console.log('componentWillUpdate')
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('componentDidUpdate');
-    }
-
-    componentWillUnmount() {
-        console.log('componentWillUnmount')
-    }
-
-    componentDidCatch(error, errorInfo) {
-        console.log(error, errorInfo)
-        console.log('componentDidCatch')
-    }
 
     render() {
         let tableList = [];
@@ -86,6 +56,37 @@ export  default class Table extends Component{
             </table>
         );
     }
+    //装载完成，在render之后调用;render之后并不会立即调用，而是所有的子组件都render完之后才可以调用;只能在浏览器端被调用，在服务器端使用react的时候不会被调用
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+    shouldComponentUpdate(nextProps){ //return  true/false  ture会重新渲染  false不会render // 应该使用这个方法，否则无论props是否有变化都将会导致组件跟着重新渲染
+       console.log('shouldComponentUpdate');
+       console.log(nextProps.TableList);
+       console.log(this.state.TableList);
+            return  true
+    }
+    componentWillReceiveProps(nextProps) { // 父组件重传props时就会调用这个方法 this.setState
+        this.setState({TableList: nextProps.TableList});
+        console.log('componentWillReceiveProps')
+    }
+    //this.foreUpdate() 是否依赖其他数据
+    componentWillUpdate() {
+        console.log('componentWillUpdate')
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('componentDidUpdate');
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount')
+    }
+
+    componentDidCatch(error, errorInfo) {
+        console.log(error, errorInfo)
+        console.log('componentDidCatch')
+    }
+
 }
 Table.propTypes = {
     TableList: PropTypes.array.isRequired
