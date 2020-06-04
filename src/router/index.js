@@ -5,6 +5,16 @@ import NotFound from '../view/NotFound'
 // import TodoList from '../view/TodoList'
 // import News from '../view/Home/News'
 
+import { configure } from "mobx"
+import { Provider} from 'mobx-react'
+
+import appStore from '../store'
+
+const stores = appStore;
+
+
+// configure({enforceActions: true});
+
 
 function lazyLoad(componentfn) {
     class LazyloadComponent extends React.Component {
@@ -35,23 +45,26 @@ const Entertainment = lazyLoad(() => import('../view/Home/Entertainment'));
 
 const BasicRoute = () => {
     return (
-        <HashRouter history={hashHistory}>
-            <Switch>
-                <Route exact path="/" render={()=> (
-                    <Redirect to='/Home'/>
-                )}/>
-                <Route path="/Home" render={(props)=>
-                    <Home {...props}>
-                        <Route exact path="/Home/News" component={News}/>
-                        <Route exact path="/Home/Entertainment" component={Entertainment}/>
-                        <Route exact path="/Home/Culture" component={Culture}/>
-                    </Home>
-                }/>
-                <Route exact path="/TodoList/:id" component={TodoList}/>
-                {/*<Route path="/404" component={NotFound} />*/}
-                {/*<Redirect to="/404" />*/}
-            </Switch>
-        </HashRouter>
+        <Provider {...stores}>
+            <HashRouter history={hashHistory}>
+                <Switch>
+                    <Route exact path="/" render={()=> (
+                        <Redirect to='/Home'/>
+                    )}/>
+                    <Route path="/Home" render={(props)=>
+                        <Home {...props}>
+                            <Route exact path="/Home/News" component={News}/>
+                            <Route exact path="/Home/Entertainment" component={Entertainment}/>
+                            <Route exact path="/Home/Culture" component={Culture}/>
+                            <Redirect to='/Home/News'/>
+                        </Home>
+                    }/>
+                    <Route exact path="/TodoList/:id" component={TodoList}/>
+                    <Route path="/404" component={NotFound} />
+                    <Redirect to="/404" />
+                </Switch>
+            </HashRouter>
+         </Provider>
     )
 };
 

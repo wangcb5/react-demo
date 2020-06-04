@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../static/home'
-import {withRouter, NavLink} from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
+import {observer, inject} from 'mobx-react'
 
 class Home extends React.Component{
     constructor(props) {
@@ -8,6 +9,8 @@ class Home extends React.Component{
         console.log(this.props)
     }
     render() {
+        // const {add, number} = this.props.appStore;
+        // console.log(add, number)
         return (
             <div>
                 首页
@@ -37,4 +40,4 @@ class Home extends React.Component{
     }
 }
 
-export default withRouter(Home)
+export default Home
