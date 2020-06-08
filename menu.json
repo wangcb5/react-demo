@@ -10,15 +10,13 @@
       {
         "path": "/Home/Entertainment", "name": "Entertainment", "component": "Home/Entertainment", "isAuth": false
       },
-      { "path": "/Home", "name": "News", "component": "News", "isAuth": false,
-        "redirect": "/Home/News"
+      { "path": "/Home", "redirect": "/Home/News"
       }
     ]
   },
   { "path": "/TodoList/:id", "name": "TodoList", "component": "TodoList", "isAuth": false},
   { "path": "/404", "name": "NotFound", "component": "NotFound", "isAuth": false},
   { "path": "/Login", "name": "Login", "component": "Login", "isAuth": false},
-  { "path": "/", "name": "Home", "component": "Home", "isAuth": false,
-    "redirect": "/Home"
+  { "path": "/", "redirect": "/Home"
   }
 ]
