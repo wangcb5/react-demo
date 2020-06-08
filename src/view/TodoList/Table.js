@@ -5,7 +5,7 @@ export  default class Table extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            TableList: props.TableList
+
         }
     }
     //将要装载，在render之前调用；每一个组件render之前立即调用;可以在服务端被调用，也可以在浏览器端被调用；
@@ -15,8 +15,8 @@ export  default class Table extends Component{
 
     render() {
         let tableList = [];
-        if (this.state.TableList instanceof Array && this.state.TableList.length > 0) {
-            tableList = this.state.TableList.map((item, index) => {
+        if (this.props.TableList instanceof Array && this.props.TableList.length > 0) {
+            tableList = this.props.TableList.map((item, index) => {
                 return (
                     <tr key={index}>
                         <td>{item.name}</td>
@@ -63,11 +63,10 @@ export  default class Table extends Component{
     shouldComponentUpdate(nextProps){ //return  true/false  ture会重新渲染  false不会render // 应该使用这个方法，否则无论props是否有变化都将会导致组件跟着重新渲染
        console.log('shouldComponentUpdate');
        console.log(nextProps.TableList);
-       console.log(this.state.TableList);
             return  true
     }
     componentWillReceiveProps(nextProps) { // 父组件重传props时就会调用这个方法 this.setState
-        this.setState({TableList: nextProps.TableList});
+        // this.setState({TableList: nextProps.TableList});
         console.log('componentWillReceiveProps')
     }
     //this.foreUpdate() 是否依赖其他数据
