@@ -1,0 +1,23 @@
+[
+  { "path": "/Home", "name": "Home", "component": "Home",
+    "children": [
+      {
+        "path": "/Home/News", "name": "News", "component": "Home/News"
+      },
+      {
+        "path": "/Home/Culture", "name": "Culture", "component": "Home/Culture"
+      },
+      {
+        "path": "/Home/Entertainment", "name": "Entertainment", "component": "Home/Entertainment"
+      },
+      { "path": "/Home", "redirect": "/Home/News"
+      }
+    ]
+  },
+  { "path": "/TodoList/:id", "name": "TodoList", "component": "TodoList"},
+  { "path": "/404", "name": "NotFound", "component": "NotFound"},
+  { "path": "/Login", "name": "Login", "component": "Login"},
+  { "path": "/Menu", "name": "Menu", "component": "Menu"},
+  { "path": "/", "redirect": "/Home"
+  }
+]

@@ -1,16 +1,6 @@
-import {observable, action} from 'mobx'
 
-class appStore {
-    @observable number
+import menuStore from "./module/menu";
 
-    constructor() {
-        this.number = 0
-    }
-
-    @action.bound add(){
-        console.log(this.number)
-        this.number ++
-    }
+export default {
+    menuStore
 }
-
-export default new appStore()

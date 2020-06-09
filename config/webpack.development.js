@@ -29,7 +29,14 @@ module.exports = {
         port: "9987",
         openPage: './index.html',
         proxy: {
-            
+            '/API':{
+                target: 'http://admin.nec.lenovouat.cn/',
+                secure: false,
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/API': ''
+                }
+            },
         },
         //404 页面返回 index.html
         historyApiFallback: true,

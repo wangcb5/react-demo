@@ -2,10 +2,13 @@ import React from 'react';
 import {HashRouter, Route, Switch, hashHistory, Redirect} from 'react-router-dom';
 import routerHandler from "./routers";
 import baseMenu from '../api/baseMenu'
-import { Provider} from 'mobx-react'
-import appStore from '../store'
-const stores = appStore;
+import routesJson from '../routesJson.json'
+import { configure } from "mobx";
+import { observer, Provider} from 'mobx-react'
+import store from '../store'
+configure({ enforceActions: "observed"});
 
+@observer
 class BasicRoute extends React.Component{
     constructor(props) {
         super(props);
@@ -15,18 +18,20 @@ class BasicRoute extends React.Component{
     }
 
     componentDidMount() {
+        store.menuStore.setRoutes(routesJson);
+         this.setState({
+             routers: routerHandler(routesJson)
+         });
         baseMenu.getMenu({}, (data) => {
             if (data.data) {
-                this.setState({
-                    routers: routerHandler(data.data)
-                })
+                store.menuStore.setMenu(data.data)
             }
-        });
+        })
     }
 
     render() {
         return (
-            <Provider {...stores}>
+            <Provider  store={store}>
                 <HashRouter history={hashHistory}>
                     <Switch>
                         {this.state.routers}

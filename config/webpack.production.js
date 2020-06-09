@@ -1,6 +1,7 @@
 
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require('../node_modules/mini-css-extract-plugin');
+
 module.exports = {
     mode: 'production',
     // output: {
@@ -37,6 +38,11 @@ module.exports = {
                     outputPath: 'images',
                 }
             },
+            {
+                test: /\.json$/,
+                exclude: /(node_modules)/,
+                loader: 'json-loader'
+            }
         ]
     },
     devtool: 'none'

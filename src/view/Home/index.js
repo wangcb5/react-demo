@@ -2,21 +2,19 @@ import React from 'react'
 import '../../static/home'
 import { NavLink} from 'react-router-dom'
 import {observer, inject} from 'mobx-react'
-
+@inject('store') @observer
 class Home extends React.Component{
     constructor(props) {
         super(props);
-        console.log(this.props)
     }
     render() {
-        // const {add, number} = this.props.appStore;
-        // console.log(add, number)
         return (
             <div>
                 首页
                 <input type="button" value={'GO TODOLIST'} onClick={() => this.props.history.push({pathname:'/TodoList/1', state: {
                     num: 222
                     }})}/>
+                <input type="button" value={'GO Menu'} onClick={() => this.props.history.push({pathname:'/Menu'})}/>
                 <div className={'btnList'}>
                     <NavLink
                         exact

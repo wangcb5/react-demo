@@ -16,7 +16,7 @@ let webpackConfig = {
     plugins: [new HtmlWebpackPlugin({
         filename: 'index.html',   // 指定生成的文件名，默认就是 index.html
         template: './src/index.html',  // 指定 html 生成使用用的模版文件，我指定 使用 ```./index.html``` 作为模版文件
-    }),
+    })
     ],
     module: {
         rules: [
@@ -26,7 +26,7 @@ let webpackConfig = {
                 use: {
                     loader: 'babel-loader'
                 },
-            },
+            }
         ],
     },
     resolve: {

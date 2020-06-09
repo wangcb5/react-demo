@@ -1,4 +1,3 @@
 export default {
-    // "orderAPI":"/orderAPI/",
-    "orderAPI":"",
+    "API":"API",
 }
