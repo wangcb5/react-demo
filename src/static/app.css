@@ -45,3 +45,13 @@ form input{
 form input[type=button]{
     margin-left: 20px;
 }
+
+.site-layout-background {
+    background: #fff;
+}
+.ant-layout-header{
+    padding: 0 !important;
+}
+::-webkit-scrollbar {
+    display: none;
+}

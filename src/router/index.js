@@ -18,9 +18,9 @@ class BasicRoute extends React.Component{
     }
 
     componentDidMount() {
-        store.menuStore.setRoutes(routesJson);
+        store.menuStore.setRoutes(routesJson.data);
          this.setState({
-             routers: routerHandler(routesJson)
+             routers: routerHandler(routesJson.data)
          });
         baseMenu.getMenu({}, (data) => {
             if (data.data) {

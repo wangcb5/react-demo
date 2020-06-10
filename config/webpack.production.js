@@ -39,8 +39,9 @@ module.exports = {
                 }
             },
             {
-                test: /\.json$/,
                 exclude: /(node_modules)/,
+                test: /\.json$/i,
+                type: 'javascript/auto',
                 loader: 'json-loader'
             }
         ]

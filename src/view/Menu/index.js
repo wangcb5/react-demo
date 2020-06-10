@@ -1,13 +1,18 @@
 import React from 'react'
-import { Menu, Spin } from 'antd';
+import { Layout, Menu, Spin,Tabs } from 'antd';
 const { SubMenu } = Menu;
+const { TabPane } = Tabs;
 import { LoadingOutlined } from '@ant-design/icons';
 import {observer, inject} from 'mobx-react'
+const { Header, Content, Footer, Sider } = Layout;
+import logo from '../../static/img/logo.png'
+
 @inject('store') @observer
-class Sider extends React.Component {
+class MenuCpm extends React.Component {
     state = {
         theme: 'dark',
         current: '1',
+        menuWidth: 260
     };
 
 
@@ -17,6 +22,23 @@ class Sider extends React.Component {
             current: e.key,
         });
     };
+
+    onCollapseHandler = (collapsed, type) => {
+      console.log(collapsed, type)
+        if (collapsed) {
+            this.setState({
+                menuWidth: 80
+            })
+        } else {
+            this.setState({
+                menuWidth: 260
+            })
+        }
+    };
+
+    Tabscallback = (key) => {
+        console.log(key)
+    }
 
     render() {
         const menuList = this.props.store.menuStore.menuList.map((item, index) => {
@@ -50,18 +72,191 @@ class Sider extends React.Component {
         });
 
         return (
-                <Menu
-                    theme={this.state.theme}
-                    onClick={this.handleClick}
-                    style={{ width: 350 }}
-                    // defaultOpenKeys={['sub1']}
-                    selectedKeys={[this.state.current]}
-                    mode="inline"
+            <Layout>
+                <Header className="header"
+                        style={{
+                            position: 'fixed',
+                            left: 0,
+                            top: 0,
+                            width: '100%'
+                        }}
                 >
-                    {menuList}
-                </Menu>
+                    <div style={{
+                        width: '260px',
+                        height: '100%',
+                        overflow: 'hidden',
+                        backgroundColor: '#1E2640',
+                        textAlign: 'center'
+                    }}>
+                        <a style={{
+                            display: 'inline-block',
+                            width: '100%',
+                            height: '100%'
+                        }} className="logoA" href="#">
+                            <img
+                                src={logo}
+                                style={{
+                                    width: 135,
+                                    marginTop: 10
+                                }}
+                            />
+                        </a>
+                    </div>
+
+                    <span style={{
+                        color: '#fff',
+                        fontSize: 20
+                    }}>
+                        header
+                    </span>
+                </Header>
+            <Layout>
+                <Sider
+                    style={{
+                        overflow: 'auto',
+                        height: '100vh',
+                        position: 'fixed',
+                        left: 0,
+                        top: 64
+                    }}
+                    onCollapse={this.onCollapseHandler}
+                    collapsible={true}
+                    width={this.state.menuWidth}
+                >
+                    <Spin  spinning={this.props.store.menuStore.menuList.length ? false : true}   tip="Loading...">
+                        <Menu
+                            theme={this.state.theme}
+                            onClick={this.handleClick}
+                            selectedKeys={[this.state.current]}
+                            mode="inline"
+                            style={{
+                                paddingBottom: '112px'
+                            }}
+                        >
+                            {menuList}
+                        </Menu>
+                    </Spin>
+                </Sider>
+                <Content
+                        style={{
+                            position: 'fixed',
+                            left: this.state.menuWidth,
+                            top: 64,
+                            height: '100vh',
+                            overflow: 'auto',
+                            background: '#eee'
+                        }}
+                    >
+                    <Spin  spinning={false}   tip="Loading..." size="large">
+                        <div className="site-layout-background"
+                             style={{
+                                 padding: '40px 20px 104px 20px',
+                                 margin: '40px 0 0 20px'
+                             }}
+                        >
+
+                            123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123123 123 123 123 123 123 123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            123
+                            <br/>
+                            456
+
+                        </div>
+                    </Spin>
+                    </Content>
+            </Layout>
+            </Layout>
         );
     }
 }
 
-export default Sider
+export default MenuCpm

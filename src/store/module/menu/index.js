@@ -13,7 +13,7 @@ class menuStore {
         this.menuList = menu
     }
     @action setRoutes(routes){
-        this.menuList = routes
+        this.routers = routes
     }
 }
 
